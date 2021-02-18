@@ -89,7 +89,7 @@ def bartender
         system('clear')
         header   
         user_selection = $prompt.select("What would you like to do?:", ['Search By Name', 'Search By Liquor', 'Search By Keyword', 'Generate a Random Drink', 'See Your Favorite Drinks', 'Exit'])
-     
+        puts "#{user_selection}"
         case user_selection 
     
         when 'Search By Liquor'
@@ -206,10 +206,7 @@ bartender
 #aesthetics
 
 #video
-#readme
-
-#API
-
+#readme - add video link
 
 
 
