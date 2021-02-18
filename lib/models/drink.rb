@@ -10,6 +10,10 @@ class Drink < ActiveRecord::Base
         all.find{|drink| drink.name == name}
     end
 
+    def self.find_by_keyword(keyword)
+        all.filter{|drink| drink.keywords == keyword}
+    end
+
     def self.choosing_graphic
         puts "Finding your random drink..."
         puts "\n"

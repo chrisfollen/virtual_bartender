@@ -3,7 +3,6 @@ ActiveRecord::Base.logger = nil
 
 $prompt = TTY::Prompt.new(symbols: {marker: '🍸'})
 
-
 def header
     title = Artii::Base.new(:font => 'standard') #cyberlarge, slant
     box = TTY::Box.frame(width: 90, height: 10, border: :light, align: :center) do
@@ -36,7 +35,29 @@ def welcome
       system "clear"
 end
 
-def name 
+def exit_message
+    system('clear')
+    title = Artii::Base.new(:font => 'standard') #cyberlarge, slant
+    box = TTY::Box.frame(width: 90, height: 10, border: :light, align: :center) do
+    "
+
+#{title.asciify("CHEERS!")}
+
+    "
+    end
+    
+      print box
+      puts "\n             🍻 💵 Please remember to tip your CompuTender on the way out 💵 🥂".colorize(:yellow)
+      sleep(5)
+      system "clear"
+end
+
+def music 
+    tunes = fork{ exec 'afplay', 'lib/Bartender.mp3' }
+end
+
+def name
+    header 
     name_in = $prompt.ask("What is your name?:")
     $current_user = User.find_by_name(name_in)
     system('clear')
@@ -55,26 +76,19 @@ def save_to_favorites drink
     system('clear')
     header
     your_favorite_drinks_names = $current_user.favorite_drinks.map{|drink| drink.name}
-    if your_favorite_drinks_names.include? drink.name 
-    $prompt.select("The #{drink.name} is already in your favorites list!", ['Return to Main Menu'])
+    if your_favorite_drinks_names.include?(drink.name) 
+        $prompt.select("The #{drink.name} is already in your favorites list!", ['Return to Main Menu'])
     else 
         Favorite.create(user: $current_user, drink: drink)
         $prompt.select("The #{drink.name} has been added to your favorites list!", ['Return to Main Menu'])
     end
 end
 
-
-
-# Search by Name
-# Search by Keyword 
-# Exit
-
 def bartender
-    
     while
         system('clear')
         header   
-        user_selection = $prompt.select("What would you like to do?:", ['Search By Liquor', 'Generate a Random Drink', 'See Your Favorite Drinks', 'Exit'])
+        user_selection = $prompt.select("What would you like to do?:", ['Search By Name', 'Search By Liquor', 'Search By Keyword', 'Generate a Random Drink', 'See Your Favorite Drinks', 'Exit'])
      
         case user_selection 
     
@@ -95,7 +109,42 @@ def bartender
                 save_to_favorites(your_drink)
             end 
 
+        when 'Search By Name'
+            system('clear')
+            header
+            drink_input_name = $prompt.ask('What drink are you looking for? Enter name of drink here:')
+            drink = Drink.find_by_name(drink_input_name)
+            system('clear')
+            header
+            if drink
+                puts "I found your drink! \n \n"
+                puts "#{drink.name}:"
+                puts "#{drink.ingredients} \n \n "
+                save_or_back = $prompt.select('Would you like to add this drink to your favorites?', ['Yeah!', 'Nah, search again'])
+                if save_or_back == 'Yeah!'
+                    save_to_favorites(drink)
+                end
+            else
+                $prompt.select("Sorry, I am not familiar with that drink \n \n", ['Back to Main Menu'])
+            end
 
+        when 'Search By Keyword'
+            system('clear')
+            header
+            keyword = $prompt.select('What are you in the mood for???', ['Highball', 'Warm', 'Sweet', 'Sour', 'Refreshing', 'Boozy'])
+            drinks = Drink.find_by_keyword(keyword)
+            drink_names = drinks.map{|drink| drink.name}
+            system('clear')
+            header
+            drink_choice = $prompt.select('Which drink sounds good?', drink_names)
+            your_drink = Drink.find_by_name(drink_choice)
+            puts "#{your_drink.name}:"
+            puts "#{your_drink.ingredients} \n \n "
+            save_or_back = $prompt.select('Would you like to add this drink to your favorites?', ['Yeah!', 'Nah, search again'])
+            if save_or_back == 'Yeah!'
+                save_to_favorites(your_drink)
+            end 
+    
 
         when 'Generate a Random Drink'
             system('clear')
@@ -131,6 +180,10 @@ def bartender
             end
     
         when 'Exit'
+            system('clear')
+            exit_message
+            tunes = fork{ exec 'killall', "afplay"}
+            system('clear')
             exit!
         end
         
@@ -139,12 +192,24 @@ def bartender
 end
 
 
+music
 welcome
-header 
 name
 bartender
 
 
-# binding.pry
+#  binding.pry
+
+
+#TO DO LIST
+
+#aesthetics
+
+#video
+#readme
+
+#API
+
+
 
 
