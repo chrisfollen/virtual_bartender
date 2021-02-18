@@ -51,11 +51,22 @@ def name
     system "clear"
 end
 
-# Search by Liquor
+def save_to_favorites drink 
+    system('clear')
+    header
+    your_favorite_drinks_names = $current_user.favorite_drinks.map{|drink| drink.name}
+    if your_favorite_drinks_names.include? drink.name 
+    $prompt.select("The #{drink.name} is already in your favorites list!", ['Return to Main Menu'])
+    else 
+        Favorite.create(user: $current_user, drink: drink)
+        $prompt.select("The #{drink.name} has been added to your favorites list!", ['Return to Main Menu'])
+    end
+end
+
+
+
 # Search by Name
 # Search by Keyword 
-# Generate a Random Drink 
-# Your Favorite Drinks 
 # Exit
 
 def bartender
@@ -77,19 +88,11 @@ def bartender
             header
             drink_choice = $prompt.select('Which drink sounds good?', drink_names)
             your_drink = Drink.find_by_name(drink_choice)
-            puts "#{drink_choice}:"
+            puts "#{your_drink.name}:"
             puts "#{your_drink.ingredients} \n \n "
             save_or_back = $prompt.select('Would you like to add this drink to your favorites?', ['Yeah!', 'Nah, search again'])
             if save_or_back == 'Yeah!'
-                system('clear')
-                header
-                your_favorite_drinks_names = $current_user.favorite_drinks.map{|drink| drink.name}
-                if your_favorite_drinks_names.include? your_drink.name 
-                    $prompt.select("The #{your_drink.name} is already in your favorites list!", ['Return to Main Menu'])
-                else 
-                    Favorite.create(user: $current_user, drink: your_drink)
-                    $prompt.select("The #{your_drink.name} has been added to your favorites list!", ['Return to Main Menu'])
-                end
+                save_to_favorites(your_drink)
             end 
 
 
@@ -97,7 +100,20 @@ def bartender
         when 'Generate a Random Drink'
             system('clear')
             header
-            #do stuff
+            your_drink = Drink.random
+            system('clear')
+            header
+            puts "Your drink is the..."
+            sleep(1)
+            puts "\n"
+            puts "\n"
+            puts "#{your_drink.name}:"
+            puts "#{your_drink.ingredients} \n \n "
+            save_or_back = $prompt.select('Would you like to add this drink to your favorites?', ['Yeah!', 'Nah, search again'])
+            if save_or_back == 'Yeah!'
+                save_to_favorites(your_drink)
+            end 
+            
 
         when 'See Your Favorite Drinks'
             system('clear')
@@ -129,6 +145,6 @@ name
 bartender
 
 
-#binding.pry
+# binding.pry
 
 
