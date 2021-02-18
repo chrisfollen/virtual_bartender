@@ -16,7 +16,7 @@ Drink.create(name: 'Gin & Tonic', spirit: 'Gin', ingredients: 'Gin, tonic water'
 Drink.create(name: 'Gimlet', spirit: 'Gin', ingredients: 'Gin, lime cordial, simple syrup', keywords: 'Sweet')
 Drink.create(name: 'Negroni', spirit: 'Gin', ingredients: 'Gin, vermouth, campari, orange peel garnish', keywords: 'Boozy')
 Drink.create(name: 'Gin Martini', spirit: 'Gin', ingredients: 'Gin, vermouth', keywords: 'Boozy')
-Drink.create(name: 'Gin sour', spirit: 'Gin', ingredients: 'Gin, simple syrup, egg white, lemon juice', keywords: 'Sour')
+Drink.create(name: 'Gin Sour', spirit: 'Gin', ingredients: 'Gin, simple syrup, egg white, lemon juice', keywords: 'Sour')
 
 
 Drink.create(name: 'Cuba Libre', spirit: 'Rum', ingredients: 'Rum, lime juice, Coke', keywords: 'Highball')
@@ -40,7 +40,7 @@ Drink.create(name: 'Tequila Sunrise', spirit: 'Tequila', ingredients: 'Tequila, 
 Drink.create(name: 'Paloma', spirit: 'Tequila', ingredients: 'Tequila, grapefruit, lime, simple syrup, soda water', keywords: 'Sweet')
 Drink.create(name: 'Ranch Water', spirit: 'Tequila', ingredients: 'Tequila, lime juice, Topo Chico (or other mineral water)', keywords: 'Refreshing')
 Drink.create(name: 'Mexican Mule', spirit: 'Tequila', ingredients: 'Tequila, lime juice, ginger beer', keywords: 'Refreshing')
-Drink.create(name: 'Tequila sour', spirit: 'Tequila', ingredients: 'Tequila, lemon juice, lime juice, simple syrup, bitters, egg white', keywords: 'Sour')
+Drink.create(name: 'Tequila Sour', spirit: 'Tequila', ingredients: 'Tequila, lemon juice, lime juice, simple syrup, bitters, egg white', keywords: 'Sour')
 Drink.create(name: 'Bloody Maria', spirit: 'Tequila', ingredients: 'Tequila, lemon, tomato juice, horseradish, Tabasco, Worcestershire, celery salt', keywords: 'Boozy')
 
 
