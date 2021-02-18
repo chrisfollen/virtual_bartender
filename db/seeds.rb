@@ -23,8 +23,8 @@ user1 = User.create(name: 'Chris')
 user2 = User.create(name: 'Jamon')
 user3 = User.create(name: 'Steven')
 
-Favorite.create(user: user1, drink: drink1)
-Favorite.create(user: user2, drink: drink2)
-Favorite.create(user: user3, drink: drink3)
+# Favorite.create(user: user1, drink: drink1)
+# Favorite.create(user: user2, drink: drink2)
+# Favorite.create(user: user3, drink: drink3)
 
 
