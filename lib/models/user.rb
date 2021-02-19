@@ -11,8 +11,4 @@ class User < ActiveRecord::Base
         my_favorites.map{|favorite| favorite.drink}
     end
 
-
-
-
-
 end

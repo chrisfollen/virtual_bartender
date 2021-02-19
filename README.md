@@ -18,7 +18,7 @@ Computender is a ClI application that allows users to create an account, search 
 
 
 ## Intro Video
-[CompuTender](<youtube_link_here>)
+[CompuTender](https://youtu.be/pfqM5xxp5A0)
 
 
 # Technologies 

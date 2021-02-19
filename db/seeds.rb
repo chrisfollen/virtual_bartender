@@ -44,9 +44,9 @@ Drink.create(name: 'Tequila Sour', spirit: 'Tequila', ingredients: 'Tequila, lem
 Drink.create(name: 'Bloody Maria', spirit: 'Tequila', ingredients: 'Tequila, lemon, tomato juice, horseradish, Tabasco, Worcestershire, celery salt', keywords: 'Boozy')
 
 
-user1 = User.create(name: 'Chris')
-user2 = User.create(name: 'Jamon')
-user3 = User.create(name: 'Steven')
+#user1 = User.create(name: 'Chris')
+# user2 = User.create(name: 'Jamon')
+# user3 = User.create(name: 'Steven')
 
 # Favorite.create(user: user1, drink: drink1)
 # Favorite.create(user: user2, drink: drink2)

@@ -191,22 +191,10 @@ def bartender
 
 end
 
-
 music
 welcome
 name
 bartender
-
-
-#  binding.pry
-
-
-#TO DO LIST
-
-#aesthetics
-
-#video
-#readme - add video link
 
 
 
