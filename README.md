@@ -8,13 +8,14 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
+- [Code Example](#code-example)
 - [Status](#status)
 - [Inspiration](#inspiration)
 - [Contact](#contact)
 
 
 ## General Info
-Computender is a ClI application that allows users to create an account, search for new drinks by a variety of methods (by name, primary liquor, keyword, etc) and save their favorite drinks.  If you're feeling brave, try the random drink generator :)
+Computender is a CLI application that allows users to create an account, search for drinks through a variety of methods, and save their favorite drinks.  If you're feeling brave, try the random drink generator! :)
 
 
 ## Intro Video
@@ -30,14 +31,14 @@ Computender is a ClI application that allows users to create an account, search 
 
 
 ## Setup 
-To run this project, install it locally by forking and cloning this GitHub repository. Then run:
+To run CompuTender, fork and clone this GitHub repository. Then run:
 
 bundle install
 rake db:migrate
 rake db:seed
 
 
-## Code Examples
+## Code Example
 
 ```ruby
 def save_to_favorites drink 
@@ -54,25 +55,26 @@ end
 ```
 
 ## Features
-- Create a user with a customizable Favorites list
 - Search for drinks by name, primary liquor, or keyword 
-- See drink ingredients
-- Generate a random drink
-- Access and update a user's Favorites list
+- See the ingredient lists for drinks
+- Generate a random drink recommendation
+- Create, access, and update a list of favorite drinks
 
 
 ## Status
-This project is finished with the possibility of expanding the functionality or refactoring the code
+This project is currently finished. We may introduce new features (e.g. making requests to an external API) or refactor existing code going forward.
 
 
 ## Inspiration
-This project was build for our Flatiron School Mod 1 CLI app. Being cocktail enthusiasts, and studying in an intensive coding bootcamp, we all needed a way to find cocktail recipes and recommendation more quickly at the end of a long day.
+We built CompuTender as our Mod 1 CLI app project. Being the cocktail enthusiasts we are, we designed this app to be the perfect companion after a long day at coding bootcamp. 
 
 
 ## Contact
 CompuTender was created by [Chris Follen](https://www.linkedin.com/in/chrisfollen/), [Jamon Dixon](https://www.linkedin.com/in/jamondixon/), and [Steven Yi](https://www.linkedin.com/in/stevenliuyi/)
 
 Feel free to reach out!
+
+
 
 
 
